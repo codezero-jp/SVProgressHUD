@@ -15,4 +15,13 @@ Pod::Spec.new do |s|
   s.framework    = 'QuartzCore'
   s.resources    = 'SVProgressHUD/SVProgressHUD.bundle'
   s.requires_arc = true
+
+  s.subspec 'Extension' do |ss|
+    ss.name         = 'SVProgressHUD_Extension'
+    ss.platform     = :ios
+    ss.source_files = 'SVProgressHUD/*.{h,m}'
+    ss.framework    = 'QuartzCore'
+    ss.resources    = 'SVProgressHUD/SVProgressHUD.bundle'
+    ss.pod_target_xcconfig = { 'GCC_PREPROCESSOR_DEFINITIONS' => '$(inherited) SV_APP_EXTENSIONS=1' }
+  end
 end
